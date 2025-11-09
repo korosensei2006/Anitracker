@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="style.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self'; 
+        connect-src 'self' https://api.jikan.moe;
+        img-src 'self' https://*.myanimelist.net data:; 
+        script-src 'self';
+        style-src 'self' 'unsafe-inline'
+    ">
+    <title> Altamis AniTracker - Discovery</title>
+    </head>
+<body class="body-bg-image">
+    <header id="app-header">
+        <button id="goToWatchlistBtn">Go To Watchlist</button>
+        
+        <div id="search-container">
+            <input type="text" id="searchInput" placeholder="Search for any anime...">
+            <button id="searchBtn">Search</button>
+        </div>
+    </header>
+
+    <main>
+        <h2 id="resultsTitle">Currently Airing Seasonal Anime</h2>
+        
+        <div id="loadingIndicator" style="text-align: center; display: none;">Loading...</div>
+        
+        <section id="resultsSection">
+            <div id="resultsContainer">
+                </div>
+        </section>
+
+        <div id="animeModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <div id="modalBody">
+                    </div>
+            </div>
+        </div>
+
+    </main>
+    
+    <script type="module" src="anime.js"></script>
+    <script type="module" src="renderer_home.js"></script> 
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="style.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Altamis AniTracker - My Watchlist</title>
+    </head>
+<body class="body-bg-image">
+    <header id="app-header">
+        <button id="goToHomeBtn">← Back to Discovery</button>
+        <h1 style="margin: 0;">Altamis AniTracker Watchlist</h1>
+    </header>
+
+    <main>
+        <div id="watchlistContainer">
+            </div>
+
+        <div id="loadingIndicator" style="text-align: center; padding: 20px; display: none;">Altamis is looking for data</div>
+        <div id="emptyMessage" style="text-align: center; padding: 40px; display: none;">
+            <p>Altamis found that your watchlist is currently empty. Go back to Discovery and add some anime!</p>
+        </div>
+        
+        <div id="updateModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close-btn-update">&times;</span>
+                <h3>Update Progress and Review</h3>
+                <div id="updateModalBody">
+                    </div>
+            </div>
+        </div>
+
+    </main>
+    
+    <script src="anime.js"></script>
+    <script src="renderer_watchlist.js"></script>
+</body>
+</body>
+</html>

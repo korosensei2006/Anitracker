@@ -1,0 +1,541 @@
+/* style.css (Layout and Structure Focus) */
+
+/* Global Reset/Base */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8; /* Light background */
+    color: #333;
+}
+
+#app-header {
+    background-color: #e0e0e0; /* Neutral header background */
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#search-container {
+    display: flex;
+}
+
+#searchInput {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+    width: 250px;
+}
+
+h1, h2, h3 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+main {
+    padding: 20px;
+}
+
+/* Buttons (Simplified) */
+.btn {
+    padding: 8px 12px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: normal;
+    background-color: #fff;
+    transition: background-color 0.1s;
+}
+
+.btn:hover {
+    background-color: #eee;
+}
+
+/* --- Screen 1: Discovery Grid Layout --- */
+
+/* Key Feature: Simple Grid Structure for Anime Cards */
+#resultsContainer {
+    display: grid;
+    /* Adjusts to fit as many cards as possible, minimum size 200px */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.anime-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.anime-card:hover {
+    transform: translateY(-3px);
+}
+
+.anime-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+
+.anime-info {
+    padding: 10px;
+}
+
+.anime-title {
+    font-weight: bold;
+    font-size: 1.1em;
+    height: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* --- Screen 2: Watchlist Layout --- */
+
+#watchlistContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+}
+
+.watchlist-item {
+    display: flex;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    align-items: center;
+}
+
+.watchlist-image {
+    width: 80px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 15px;
+}
+
+.watchlist-info {
+    flex-grow: 1;
+}
+
+.watchlist-actions {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+/* style.css */
+
+/* Locks the main page scroll when the modal is open */
+.modal-open {
+    overflow: hidden;
+}
+
+/* You should also ensure your modal content can scroll if it's too tall */
+.modal-content {
+    /* Example: adjust max-height and overflow as needed for your design */
+    max-height: 90vh; 
+    overflow-y: auto; 
+}
+
+/* Progress Bar (Simple) */
+.progress-bar-container {
+    background-color: #ddd;
+    border-radius: 5px;
+    margin: 5px 0;
+    height: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: #888; /* Neutral fill color */
+    transition: width 0.4s;
+}
+
+.progress-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: #333;
+    font-weight: bold;
+    line-height: 20px;
+    font-size: 0.9em;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: none;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    width: 80%;
+    max-width: 900px;
+    border-radius: 8px;
+    position: relative;
+}
+/* style.css (Updated for Polish Look and Background Image Template) */
+
+/* -------------------- 🎨 Global Reset/Base -------------------- */
+:root {
+    /* Color Palette (Subtle Dark Mode / Deep Neutrals) */
+    --color-primary: #5a7dff;      /* A vibrant blue for main actions */
+    --color-secondary: #00bf8f;    /* A complementary green for success/progress */
+    --color-background-dark: #1e1e1e; /* Main background */
+    --color-background-light: #2c2c2c; /* Component background (cards, modals) */
+    --color-text-light: #f0f0f0;   /* Light text for dark background */
+    --color-text-muted: #aaaaaa;   /* Subtler text */
+    --color-border: #444444;       /* Subtle borders */
+    --color-shadow: rgba(0, 0, 0, 0.4);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-background-dark);
+    color: var(--color-text-light);
+    line-height: 1.6;
+}
+
+/* 🖼️ Background Image Template (Apply this class to the <body> tag) */
+.body-bg-image {
+    /* Replace 'path/to/your/image.jpg' with the actual path */
+    background-image: url('path/to/your/image.jpg'); 
+    background-size: cover;
+    background-attachment: fixed; /* Optional: keeps image static during scroll */
+    background-position: center center;
+    background-repeat: no-repeat;
+    /* Optional: Overlay a dark gradient/color for better text readability */
+    /* Add a very slight black overlay to ensure text stands out */
+    background-color: rgba(0, 0, 0, 0.2); 
+    background-blend-mode: multiply;
+}
+
+/* -------------------- 🧱 Header and Layout -------------------- */
+#app-header {
+    background-color: var(--color-background-light);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px var(--color-shadow);
+    z-index: 5; /* Ensure it stays above main content */
+    position: sticky;
+    top: 0;
+}
+
+#search-container {
+    display: flex;
+}
+
+#searchInput {
+    padding: 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 6px 0 0 6px;
+    width: 280px;
+    background-color: #333;
+    color: var(--color-text-light);
+    font-size: 1em;
+}
+
+h1, h2, h3 {
+    text-align: center;
+    margin-top: 20px;
+    color: var(--color-text-light); /* Ensure headings are visible */
+}
+
+main {
+    padding: 20px;
+    max-width: 1400px; /* Limit content width for better readability */
+    margin: 0 auto;
+}
+
+/* -------------------- 🔘 Buttons and Forms -------------------- */
+.btn, button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95em;
+    transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+    white-space: nowrap;
+}
+
+/* Default/Neutral Button */
+#goToWatchlistBtn, #goToHomeBtn, #searchBtn, .close-btn, .close-btn-update {
+    background-color: var(--color-background-light);
+    color: var(--color-text-light);
+    border: 1px solid var(--color-border);
+}
+
+#goToWatchlistBtn:hover, #goToHomeBtn:hover, #searchBtn:hover {
+    background-color: #383838;
+    box-shadow: 0 0 10px rgba(90, 125, 255, 0.3); /* Subtle blue glow */
+}
+
+/* Primary Action Button (e.g., Add/Save) - If you add one later */
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #4667e5;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(90, 125, 255, 0.5);
+}
+
+/* -------------------- 📺 Screen 1: Discovery Grid Layout -------------------- */
+
+#resultsTitle {
+    text-align: left;
+    margin-bottom: 25px;
+    font-size: 2em;
+    font-weight: 300;
+}
+
+#loadingIndicator {
+    color: var(--color-text-muted);
+}
+
+#resultsContainer {
+    display: grid;
+    /* Adjusts to fit as many cards as possible, minimum size 220px */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.anime-card {
+    background: var(--color-background-light);
+    border-radius: 12px;
+    box-shadow: 0 6px 15px var(--color-shadow);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid transparent; /* Prepare for hover border */
+}
+
+.anime-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(90, 125, 255, 0.3);
+    border: 1px solid var(--color-primary);
+}
+
+.anime-image {
+    width: 100%;
+    /* Adjusted height for better cover art ratio */
+    height: 320px; 
+    object-fit: cover;
+    display: block;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.anime-info {
+    padding: 15px 10px;
+    min-height: 80px; /* Ensure consistent card height */
+}
+
+.anime-title {
+    font-weight: 600;
+    font-size: 1.2em;
+    color: var(--color-text-light);
+    height: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 0 0 5px 0;
+}
+
+.anime-score {
+    font-size: 0.9em;
+    color: var(--color-secondary);
+    font-weight: bold;
+}
+
+/* -------------------- 🎬 Screen 2: Watchlist Layout -------------------- */
+
+#watchlistContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px 0;
+}
+
+.watchlist-item {
+    display: flex;
+    background: var(--color-background-light);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px var(--color-shadow);
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+.watchlist-item:hover {
+    background-color: #353535;
+}
+
+.watchlist-image {
+    width: 90px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-right: 20px;
+    border: 1px solid var(--color-border);
+}
+
+.watchlist-info {
+    flex-grow: 1;
+}
+
+.watchlist-info h3 {
+    text-align: left;
+    margin: 0 0 5px 0;
+    font-size: 1.5em;
+}
+
+.watchlist-info p {
+    color: var(--color-text-muted);
+    margin: 3px 0;
+    font-size: 0.9em;
+}
+
+
+.watchlist-actions {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end; /* Align buttons to the right */
+}
+
+/* -------------------- 🚀 Progress Bar -------------------- */
+.progress-bar-container {
+    background-color: #444;
+    border-radius: 5px;
+    margin: 8px 0;
+    height: 25px; /* Slightly taller */
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: var(--color-secondary);
+    transition: width 0.4s ease-out;
+    border-radius: 5px 0 0 5px; /* Only round left corners */
+}
+
+.progress-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: var(--color-text-light);
+    font-weight: 700;
+    line-height: 25px;
+    font-size: 1em;
+    text-shadow: 0 0 3px #000; /* Add shadow for better contrast */
+}
+
+/* -------------------- 💎 Modal Styles -------------------- */
+.modal-open {
+    overflow: hidden;
+}
+
+.modal {
+    position: fixed;
+    z-index: 100; /* High z-index */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8); /* Darker, more prominent overlay */
+    display: none;
+    overflow-y: auto; /* Allow modal itself to scroll */
+    padding: 40px 0;
+    box-sizing: border-box;
+}
+
+.modal-content {
+    background-color: var(--color-background-light);
+    margin: 0 auto; /* Center content vertically and horizontally */
+    padding: 30px;
+    border: 1px solid var(--color-border);
+    width: 90%;
+    max-width: 900px;
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    max-height: calc(100vh - 80px); /* Adjust based on padding */
+    overflow-y: auto; 
+}
+
+.close-btn, .close-btn-update {
+    color: var(--color-text-muted);
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    line-height: 1;
+    background: none;
+    padding: 0;
+    border: none;
+}
+
+.close-btn:hover, .close-btn-update:hover {
+    color: var(--color-primary);
+    text-decoration: none;
+    cursor: pointer;
+    background: none;
+}
+
+/* Additional modal body details styling (e.g., in anime.js/renderer_home.js) */
+#modalBody img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    display: block;
+}
+
+#emptyMessage {
+    color: var(--color-text-muted);
+    font-size: 1.2em;
+    border: 1px dashed var(--color-border);
+    padding: 50px;
+    border-radius: 10px;
+    margin-top: 30px;
+    background-color: #252525;
+}
+
+/* Add a style for the search button next to the input */
+#searchBtn {
+    border-radius: 0 6px 6px 0;
+    margin-left: -1px; /* Overlap border */
+}
